@@ -3,22 +3,22 @@ import unittest
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         size =len(s)
-        if size <1:
-            return 0
-        result = 1
-        for init in range(size-1):
-            if (size-init<=result):
-                break
-            found = [s[init]]
-            for fin in range(init+1,size):
-                if s[fin] not in found:
-                    found.append(s[fin])
-                else:
+        i,j,ans= 0,0,0
+        found = dict()
+        while j<size:
+            if (s[j] not in found):
+              found[s[j]] =j
+              j+=1
+              ans = max(j-i,ans)
+            else:
+                found.pop(s[i])
+                i+=1
+                if size-i<ans:
                     break
-            if len(found)>result:
-                result = len(found)
-        return result
+        return ans
+            
 
+        
 class lengthTestCase(unittest.TestCase):
 
     def testBasiclength(self):
