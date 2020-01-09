@@ -60,7 +60,8 @@ class MyBinaryTreeTestCase(unittest.TestCase):
         myTree.right = TreeNode(3)
         myTree.right.left = TreeNode(4)
         self.assertEqual([0,1,2,3,4],preorderTraversal(myTree))
-        
+
+
  
 if __name__ == '__main__':
     unittest.main()
